@@ -1,0 +1,16 @@
+.nav-item{
+    padding:2px;
+    margin-left: 7px;
+}
+
+.nav-link{
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.navbar-brand{
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+}

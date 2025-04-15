@@ -1,0 +1,33 @@
+<div class="container" style="margin-top: 70px;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>DeviceType</th>
+        <th>messageContent</th>
+        <th>timeStamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let device of devices| paginate : {
+        itemsPerPage: pageSize,
+        currentPage: page
+      }; let i = index">
+      <td>{{ i+1+ (page - 1) * pageSize }}</td>
+      <td>{{ device.name }}</td>
+      <td>{{ device.deviceType }}</td>
+      <td>{{ device.messageContent }}</td>
+      <td>{{ device.timeStamp }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="col-md-12">
+  <pagination-controls
+    previousLabel="Prev"
+    nextLabel="Next"
+    [responsive]="true"
+    (pageChange)="handlePageChange($event)"
+  ></pagination-controls>
+</div>
