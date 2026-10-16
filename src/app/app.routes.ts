@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DataListComponent } from './data-list/data-list.component';
 import { HomeComponent } from './home/home.component';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 
 export const routes: Routes = [{path:  "", pathMatch:  "full",redirectTo:  "home"},
@@ -9,7 +10,8 @@ export const routes: Routes = [{path:  "", pathMatch:  "full",redirectTo:  "home
   {path: "data-list", component: DataListComponent}  ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes,{ useHash: true })],
-    exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule],
+    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }]
   })
   export class AppRoutes { }
