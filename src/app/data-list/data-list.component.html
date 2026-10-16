@@ -5,7 +5,8 @@
         <th>#</th>
         <th>Name</th>
         <th>DeviceType</th>
-        <th>messageContent</th>
+        <th>MessageContent</th>
+        <th>MediaContent</th>
         <th>timeStamp</th>
       </tr>
     </thead>
@@ -18,6 +19,12 @@
       <td>{{ device.name }}</td>
       <td>{{ device.deviceType }}</td>
       <td>{{ device.messageContent }}</td>
+      <td>
+<!--        <img [src]="device.mediaContent" (click)="enlarge(this)" width="100" height="100">-->
+        <a href="" target="_blank" (click)="enlarge($event)" title="Click to enlarge image in new tab">
+          <img [src]="device.mediaContent" alt="Click to enlarge" style="width: 100px; height: 100px; cursor: pointer;">
+        </a>
+      </td>
       <td>{{ device.timeStamp }}</td>
       </tr>
     </tbody>

@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+.img{
+  width: 200px;
+	height: 200px;
+}
+
+.fullsize{
+	border: 11px solid green;
+	z-index: 999;
+	cursor: zoom-out;
+	display: block;
+	width: 400px;
+	max-width: 400px;
+	height: 550px;
+	position: fixed;
+	left: 100px;
+	top: 30px;
+}
