@@ -2,16 +2,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { DataListComponent } from './data-list/data-list.component';
 import { HomeComponent } from './home/home.component';
-import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 
-export const routes: Routes = [{path:  "", pathMatch:  "full",redirectTo:  "home"},
-  {path: "home", component: HomeComponent},
-  {path: "data-list", component: DataListComponent}  ];
+export const routes: Routes = [{path:  "", pathMatch:  "full",redirectTo:  "home", useHash: true},
+  {path: "home", component: HomeComponent, useHash: true},
+  {path: "data-list", component: DataListComponent, useHash: true}  ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule],
-    providers: [{ provide: LocationStrategy, useClass: PathLocationStrategy }]
+    imports: [RouterModule.forRoot(routes,{ useHash: true })],
+    exports: [RouterModule]
   })
   export class AppRoutes { }
