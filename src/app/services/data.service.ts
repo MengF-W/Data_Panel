@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
 })
 export class DataService {
 
-  private url: string = environment.service_url + 'db/postgres/getAllData';
+  private url: string = environment.service_url + '/db/postgres/getAllData';
   constructor(private httpClient: HttpClient) { }
 
   public getAllData(): Observable<any> {
