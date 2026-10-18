@@ -93,8 +93,8 @@
               }
             ],
             "styles": [
-              "/dist/data-panel/browser/styles.css",
-              "/src/styles.css"
+              "dist/data-panel/browser/styles.css",
+              "src/styles.css"
             ],
             "scripts": []
           }
