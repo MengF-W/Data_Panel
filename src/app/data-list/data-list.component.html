@@ -13,14 +13,14 @@
     <tbody>
       <tr *ngFor="let device of devices| paginate : {
         itemsPerPage: pageSize,
-        currentPage: page
+        currentPage: pageNumber,
+        totalItems: pageItemsTotalCount
       }; let i = index">
-      <td>{{ i+1+ (page - 1) * pageSize }}</td>
+      <td>{{ i+1+ (pageNumber - 1) * pageSize }}</td>
       <td>{{ device.name }}</td>
       <td>{{ device.deviceType }}</td>
       <td>{{ device.messageContent }}</td>
       <td>
-<!--        <img [src]="device.mediaContent" (click)="enlarge(this)" width="100" height="100">-->
         <a href="" target="_blank" (click)="enlarge($event)" title="Click to enlarge image in new tab">
           <img [src]="device.mediaContent" alt="Click to enlarge" style="width: 100px; height: 100px; cursor: pointer;">
         </a>
@@ -36,5 +36,6 @@
     nextLabel="Next"
     [responsive]="true"
     (pageChange)="handlePageChange($event)"
+    (pageBoundsCorrection)="handlePageChange($event)"
   ></pagination-controls>
 </div>

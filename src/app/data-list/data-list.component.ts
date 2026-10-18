@@ -1,7 +1,7 @@
 import {Component, SecurityContext} from '@angular/core';
 import { Device } from '../model/device';
 import { CommonModule, NgFor } from '@angular/common';
-import { DataService } from '../services/data.service';
+import {DataService} from '../services/data.service';
 import { NgxPaginationModule } from 'ngx-pagination';
 import {DomSanitizer, SafeUrl} from '@angular/platform-browser';
 
@@ -15,16 +15,23 @@ export class DataListComponent {
 
   constructor(private dataService: DataService,private domSanitizer: DomSanitizer) { }
 
-  page = 1;
-  count = 0;
+  pageNumber = 1;
+  pageItemsTotalCount = 0;
   pageSize = 10;
+  pageTotal = 0;
 
   devices: Device[] = [];
 
   ngOnInit(){
+      this.getDevices(this.pageNumber,this.pageSize);
+  }
 
-    this.dataService.getAllData().subscribe(response => {
-      this.devices = response.map((item:any) =>
+  getDevices(pageNumber : number, pageSize : number): void {
+    this.dataService.getAllData(pageNumber,pageSize).subscribe(response => {
+      this.pageItemsTotalCount = response.totalElements
+      this.pageNumber = response.pageable.pageNumber + 1
+      this.pageTotal = response.totalPages;
+      this.devices = response.content.map((item:any) =>
         {
           return new Device(
               item.id,
@@ -39,13 +46,14 @@ export class DataListComponent {
   }
 
   handlePageChange(event: number): void {
-    this.page = event;
+
+    this.getDevices(event,this.pageSize);
 
   }
 
   handlePageSizeChange(event: any): void {
     this.pageSize = event.target.value;
-    this.page = 1;
+    this.pageNumber = 1;
 
   }
 
