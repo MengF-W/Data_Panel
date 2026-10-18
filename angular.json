@@ -93,7 +93,6 @@
               }
             ],
             "styles": [
-              "dist/data-panel/browser/styles.css",
               "src/styles.css"
             ],
             "scripts": []
