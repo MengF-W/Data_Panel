@@ -21,7 +21,7 @@
       <td>{{ device.deviceType }}</td>
       <td>{{ device.messageContent }}</td>
       <td>
-        <a href="" target="_blank" (click)="enlarge($event)" title="Click to enlarge image in new tab">
+        <a [href]="device.mediaContent" target="_blank" (click)="enlarge($event)" title="Click to enlarge image in new tab">
           <img [src]="device.mediaContent" alt="Click to enlarge" style="width: 100px; height: 100px; cursor: pointer;">
         </a>
       </td>
