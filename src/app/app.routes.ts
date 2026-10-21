@@ -9,7 +9,7 @@ export const routes: Routes = [{path:  "", pathMatch:  "full",redirectTo:  "home
   {path: "data-list", component: DataListComponent}  ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes)],
+    imports: [RouterModule.forRoot(routes,{ useHash: true })],
     exports: [RouterModule]
   })
   export class AppRoutes { }

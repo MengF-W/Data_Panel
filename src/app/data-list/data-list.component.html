@@ -5,19 +5,26 @@
         <th>#</th>
         <th>Name</th>
         <th>DeviceType</th>
-        <th>messageContent</th>
+        <th>MessageContent</th>
+        <th>MediaContent</th>
         <th>timeStamp</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let device of devices| paginate : {
         itemsPerPage: pageSize,
-        currentPage: page
+        currentPage: pageNumber,
+        totalItems: pageItemsTotalCount
       }; let i = index">
-      <td>{{ i+1+ (page - 1) * pageSize }}</td>
+      <td>{{ i+1+ (pageNumber - 1) * pageSize }}</td>
       <td>{{ device.name }}</td>
       <td>{{ device.deviceType }}</td>
       <td>{{ device.messageContent }}</td>
+      <td>
+        <a [href]="device.mediaContent" target="_blank" (click)="enlarge($event)" title="Click to enlarge image in new tab">
+          <img [src]="device.mediaContent" alt="Click to enlarge" style="width: 100px; height: 100px; cursor: pointer;">
+        </a>
+      </td>
       <td>{{ device.timeStamp }}</td>
       </tr>
     </tbody>
@@ -29,5 +36,6 @@
     nextLabel="Next"
     [responsive]="true"
     (pageChange)="handlePageChange($event)"
+    (pageBoundsCorrection)="handlePageChange($event)"
   ></pagination-controls>
 </div>
