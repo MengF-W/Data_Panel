@@ -19,7 +19,7 @@ The collected devices data are retrived from database and displayed
 3. `ng serve` - Start the serve and access http://localhost:4200 from the browser
 
 # Publish
-It has been published and can be accessed at https://data-panel-dev.onrender.com/#/data-list. 
+It has been published and can be accessed at https://data-panel-dev.onrender.com/#/home. 
 
 <img width="1770" height="1028" alt="image" src="https://github.com/user-attachments/assets/e226b166-c9b3-43f5-8604-2c4bf2c67214" />
 
