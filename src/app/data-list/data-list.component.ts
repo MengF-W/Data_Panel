@@ -19,6 +19,9 @@ export class DataListComponent {
   pageItemsTotalCount = 0;
   pageSize = 10;
   pageTotal = 0;
+  imageFeed = "waiting.png";
+  showWaiting = true;
+  showTable = false;
 
   devices: Device[] = [];
 
@@ -41,8 +44,11 @@ export class DataListComponent {
               this.domSanitizer.bypassSecurityTrustUrl('data:image/jpg;base64, ' + item.mediaContent),
               item.timeStamp
           );
+        })
+    }).add(() => {
+              this.showWaiting = false;
+              this.showTable = true;
         });
-    });
   }
 
   handlePageChange(event: number): void {
